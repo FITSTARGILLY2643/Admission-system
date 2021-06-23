@@ -11,3 +11,9 @@ class CourseForm(FlaskForm):
     description = TextAreaField('Content', validators=[DataRequired()])
     institution = TextAreaField('Institution', validators=[DataRequired()])
     submit = SubmitField('Post')
+
+class ApplicationForm(FlaskForm):
+    institution = SelectField('Institution',choices=[('Moringa School','Moringa School'),('Zetech University','Zetech University'),('Moi University','Moi University')],validators=[Required()])
+    programme = SelectField('Programme',choices=[('Data Science','Data Science'),('Artificial Intelligence','Artificial Intelligence'),('Software Development','Software Development')],validators=[Required()])
+    intake = SelectField('Intake',choices=[('January Intake','January Intake'),('August Intake','August Intake')],validators=[Required()])
+    submit = SubmitField('Submit')

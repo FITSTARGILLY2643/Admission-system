@@ -2,7 +2,7 @@ from flask import render_template,request,redirect,url_for,abort,flash
 from . import main
 from ..models import Courses, User
 from .. import db,photos
-from .forms import UpdateProfile,CourseForm
+from .forms import ApplicationForm, UpdateProfile,CourseForm
 from flask_login import login_required,current_user
 # import datetime
 
@@ -55,19 +55,19 @@ def update_pic(uname):
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
 
-@main.route('/apply')
+@main.route('/apply',methods = ['GET','POST'])
 def apply():
 
     title = 'Apply Now'
+    application_form =ApplicationForm()
+    if application_form.validate_on_submit():
+        application = ApplicationForm(institution=application_form.institution.data,programme=application_form.programme.data,intake=application_form.intake.data)
+        db.session.add(application)
+        db.session.commit()
+        flash('You have applied your programme successfully!', 'success')
+        return redirect(url_for('main.index'))
   
-    return render_template('apply.html',title = title)
-
-@main.route('/programmes')
-def programmes():
-
-    title = 'Programmes'
-  
-    return render_template('programmes.html',title = title)
+    return render_template('apply.html',title = title,application_form=application_form)
 
 @main.route('/addCourse', methods = ['GET','POST'])
 @login_required
