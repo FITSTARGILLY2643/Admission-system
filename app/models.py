@@ -9,7 +9,7 @@ def load_user(user_id):
     return User.query.get(int(user_id))
     
 class User(UserMixin,db.Model):
-    __tablename__ = 'users'
+    _tablename_ = 'users'
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255),index =True)
     firstname = db.Column(db.String(255))
@@ -19,6 +19,10 @@ class User(UserMixin,db.Model):
     profile_pic_path = db.Column(db.String)
     pass_secure = db.Column(db.String(255))
     date_joined = db.Column(db.DateTime,default=datetime.utcnow)
+
+    applicant = db.relationship('Application',backref = 'user',lazy = "dynamic")
+  
+
     @property
     def password(self):
         raise AttributeError('You cannot read the password attribute')
@@ -27,16 +31,24 @@ class User(UserMixin,db.Model):
         self.pass_secure = generate_password_hash(password)
     def verify_password(self,password):
         return check_password_hash(self.pass_secure,password)
-    def __repr__(self):
+    def _repr_(self):
         return f'User {self.username}'
 
 
 class Courses(db.Model):
-    __tablename__ = 'course'
+    _tablename_ = 'course'
     id = db.Column(db.Integer,primary_key = True)
     institution = db.Column(db.String(150),index =True)
     title = db.Column(db.String(255),index =True)
     description = db.Column(db.String(12255))
     
+class Application(db.Model):
+    _tablename_ = 'applications'
+    id = db.Column(db.Integer,primary_key = True)
 
-    
+    applicant = db.Column(db.String(150),index =True)
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+
+    institution = db.Column(db.String(150),index =True)
+    programme = db.Column(db.String(150),index =True)
+    intake = db.Column(db.String(150),index =True)
