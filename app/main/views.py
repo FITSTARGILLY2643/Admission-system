@@ -2,6 +2,7 @@ from flask import render_template,request,redirect,url_for,abort,flash
 from . import main
 from ..models import Courses, User,Application
 from .. import db,photos
+from flask_login import login_required,current_user
 from .forms import UpdateProfile,CourseForm,ApplicationForm
 from .forms import ApplicationForm, UpdateProfile,CourseForm
 
