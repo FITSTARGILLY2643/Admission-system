@@ -8,9 +8,9 @@ class UpdateProfile(FlaskForm):
 
 class CourseForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
-    description = TextAreaField('Content', validators=[DataRequired()])
-    institution = TextAreaField('Institution', validators=[DataRequired()])
-    submit = SubmitField('Post')
+    description = StringField('Programme', validators=[DataRequired()])
+    institution = StringField('Institution', validators=[DataRequired()])
+    submit = SubmitField('Submit')
 
 class ApplicationForm(FlaskForm):
     institution = SelectField('Institution',choices=[('Moringa School','Moringa School'),('Zetech University','Zetech University'),('Moi University','Moi University')],validators=[Required()])
