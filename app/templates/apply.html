@@ -1,7 +1,15 @@
-{%extends 'base.html'%}
-{%import 'macros.html' as macro %}
+{% extends 'base.html'%}
+{% import "bootstrap/wtf.html" as wtf %}
 
+{% block content %}
+    <div class="container">
+        <div class="col-md-12">
+            <h3>Apply for your Programme Here</h3>
+            <hr>
+            {{ wtf.quick_form(application_form) }}
+        </div>
 
+<<<<<<< HEAD
 {% block head %}
   {{ super() }}
 
@@ -15,3 +23,8 @@
 
 
 {%endblock%}
+=======
+    </div>
+
+{% endblock %}
+>>>>>>> 15b8aef3173597a936a967b98456492a5825cc5f
