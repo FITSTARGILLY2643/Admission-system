@@ -1,9 +1,12 @@
-from flask import render_template,request,redirect,url_for,abort,flash
+from flask import abort, flash, redirect, render_template, request, url_for
+
+from .. import db, photos
+from ..models import Application, Courses, User
 from . import main
-from ..models import Courses, User,Application
-from .. import db,photos
-from .forms import UpdateProfile,CourseForm,ApplicationForm
-from .forms import ApplicationForm, UpdateProfile,CourseForm
+from .forms import ApplicationForm, CourseForm, UpdateProfile
+from flask_login import login_required, current_user
+
+
 
 @main.route('/')
 def index():
