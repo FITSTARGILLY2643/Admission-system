@@ -1,10 +1,9 @@
 from flask import render_template,request,redirect,url_for,abort,flash
 from . import main
-from ..models import Courses, User
+from ..models import Courses, User,Application
 from .. import db,photos
+from .forms import UpdateProfile,CourseForm,ApplicationForm
 from .forms import ApplicationForm, UpdateProfile,CourseForm
-from flask_login import login_required,current_user
-# import datetime
 
 @main.route('/')
 def index():
@@ -61,13 +60,22 @@ def apply():
     title = 'Apply Now'
     application_form =ApplicationForm()
     if application_form.validate_on_submit():
-        application = ApplicationForm(institution=application_form.institution.data,programme=application_form.programme.data,intake=application_form.intake.data)
+        application = Application(institution=application_form.institution.data,programme=application_form.programme.data,intake=application_form.intake.data)
         db.session.add(application)
         db.session.commit()
         flash('You have applied your programme successfully!', 'success')
         return redirect(url_for('main.index'))
   
     return render_template('apply.html',title = title,application_form=application_form)
+
+
+@main.route('/programmes')
+def programmes():
+
+    title = 'Programmes'
+  
+    return render_template('programmes.html',title = title)
+
 
 @main.route('/addCourse', methods = ['GET','POST'])
 @login_required
@@ -81,11 +89,3 @@ def new_course():
         return redirect(url_for('main.programmes'))
     return render_template('create_course.html' , title='New Course', form=course_form ,  legend ='Create Course')
   
-    
-
-@main.route('/singleCourse')
-def course():
-
-    title = 'Course'
-  
-    return render_template('single_course.html',title = title)

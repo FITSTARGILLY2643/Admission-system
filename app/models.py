@@ -43,12 +43,12 @@ class Courses(db.Model):
     description = db.Column(db.String(12255))
     
 class Application(db.Model):
-    _tablename_ = 'applications'
+    __tablename__ = 'applications'
     id = db.Column(db.Integer,primary_key = True)
-
     applicant = db.Column(db.String(150),index =True)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-
     institution = db.Column(db.String(150),index =True)
     programme = db.Column(db.String(150),index =True)
     intake = db.Column(db.String(150),index =True)
+    
+    
