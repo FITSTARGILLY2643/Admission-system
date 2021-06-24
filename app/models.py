@@ -9,7 +9,7 @@ def load_user(user_id):
     return User.query.get(int(user_id))
     
 class User(UserMixin,db.Model):
-    _tablename_ = 'users'
+    __tablename__ = 'users'
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255),index =True)
     firstname = db.Column(db.String(255))
@@ -36,7 +36,7 @@ class User(UserMixin,db.Model):
 
 
 class Courses(db.Model):
-    _tablename_ = 'course'
+    __tablename__ = 'course'
     id = db.Column(db.Integer,primary_key = True)
     institution = db.Column(db.String(150),index =True)
     title = db.Column(db.String(255),index =True)

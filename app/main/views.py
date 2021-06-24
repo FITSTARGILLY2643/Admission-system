@@ -3,10 +3,11 @@ from flask import abort, flash, redirect, render_template, request, url_for
 from .. import db, photos
 from ..models import Application, Courses, User
 from . import main
-from .forms import ApplicationForm, CourseForm, UpdateProfile
-from flask_login import login_required, current_user
-
-
+from ..models import Courses, User,Application
+from .. import db,photos
+from flask_login import login_required,current_user
+from .forms import UpdateProfile,CourseForm,ApplicationForm
+from .forms import ApplicationForm, UpdateProfile,CourseForm
 
 @main.route('/')
 def index():
@@ -57,19 +58,19 @@ def update_pic(uname):
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
 
-@main.route('/apply',methods = ['GET','POST'])
-def apply():
-
+@main.route('/apply/<uname>',methods = ['GET','POST'])
+def apply(uname):
+    # applicant=User.query.get_by(username=uname).first()
     title = 'Apply Now'
     application_form =ApplicationForm()
     if application_form.validate_on_submit():
         application = Application(institution=application_form.institution.data,programme=application_form.programme.data,intake=application_form.intake.data)
         db.session.add(application)
         db.session.commit()
-        flash('You have applied your programme successfully!', 'success')
+        # flash('You have applied your programme successfully!', 'success')
         return redirect(url_for('main.index'))
   
-    return render_template('apply.html',title = title,application_form=application_form)
+    return render_template('apply.html',title = title,application_form=application_form,applicant=applicant,uname=uname)
 
 
 @main.route('/programmes')
