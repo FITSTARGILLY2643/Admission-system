@@ -19,6 +19,10 @@ class User(UserMixin,db.Model):
     profile_pic_path = db.Column(db.String)
     pass_secure = db.Column(db.String(255))
     date_joined = db.Column(db.DateTime,default=datetime.utcnow)
+
+    applicant = db.relationship('Application',backref = 'user',lazy = "dynamic")
+  
+
     @property
     def password(self):
         raise AttributeError('You cannot read the password attribute')
@@ -38,5 +42,15 @@ class Courses(db.Model):
     title = db.Column(db.String(255),index =True)
     description = db.Column(db.String(12255))
     
+class Application(db.Model):
+    __tablename__ = 'applications'
+    id = db.Column(db.Integer,primary_key = True)
 
+    applicant = db.Column(db.String(150),index =True)
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+
+    institution = db.Column(db.String(150),index =True)
+    programme = db.Column(db.String(150),index =True)
+    intake = db.Column(db.String(150),index =True)
+    
     
