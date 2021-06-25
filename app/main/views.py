@@ -55,9 +55,10 @@ def update_pic(uname):
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
 
-@main.route('/apply/<uname>',methods = ['GET','POST'])
-def apply(uname):
-    # applicant=User.query.get_by(username=uname).first()
+@main.route('/apply',methods = ['GET','POST'])
+@login_required
+def apply():
+   
     title = 'Apply Now'
     application_form =ApplicationForm()
     if application_form.validate_on_submit():
@@ -65,9 +66,9 @@ def apply(uname):
         db.session.add(application)
         db.session.commit()
         # flash('You have applied your programme successfully!', 'success')
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main.congratulations'))
   
-    return render_template('apply.html',title = title,application_form=application_form,applicant=applicant,uname=uname)
+    return render_template('apply.html',title = title,application_form=application_form)
 
 
 @main.route('/programmes')
@@ -90,3 +91,11 @@ def new_course():
         return redirect(url_for('main.programmes'))
     return render_template('create_course.html' , title='New Course', form=course_form ,  legend ='Create Course')
   
+@main.route('/congratulations')
+def congratulations():
+    # user = User.query.filter_by(username = uname).first()
+
+    # if user is None:
+    #     abort(404)
+
+    return render_template("congrats.html")

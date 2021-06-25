@@ -36,6 +36,7 @@
                     </ul>
                 </li>
                 {% else %}
+               <li> <a href="{{url_for('auth.register')}}">Sign up</a></li> 
                 <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
             </ul>
             {%endif%}

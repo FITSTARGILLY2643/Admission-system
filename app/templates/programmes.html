@@ -1,109 +1,117 @@
-{%extends 'base.html'%}
-{%import 'macros.html' as macro %}
-
-
-{%block content%}
-
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+{% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="course-items">
-                <div class="row justify-content-center">
-
-
-                    <div class="col-lg-6">
-                        <div class="item course-item">
-                            <a href="{{url_for('main.new_course')}}"><img
-                                    src="https://img-c.udemycdn.com/course/240x135/822444_a6db.jpg?Expires=1624519499&Signature=iya2oBNI8xG7nvFvhEBztjV~KeXbw41oN7Takbai5PFzblvD5mWnZjHwDwrC6BEiDBPL2ZUp6Avuo1aIAM9DIJBAXiECUe3UVp8Re5J8841oEa930ydXVcse5FZa5l6vEPTgHB7azKBbN1kXzlZyGpK7SGdSVTbiSzbKx6Zk2QfzeTUYSg~qjItbuoUMXIEPTPUJtl1W4YxNCZHn5Kjbi~8xH1g-xmqMJMJSZ1vhtUTfqgV5RVcHfkkCqujLEHwRbpE7eop4Z2Y5q85NClLTOfjVxB0mWPrgLRPHymV~kj3WbYvKy6SJv6pgwwoZcywduOhDpcZ1RMqf75r3PQlpZw__&Key-Pair-Id=APKAITJV77WS5ZT7262A"
-                                    alt="X"></a>
-                            <div class="down-content">
-                                <img class="img" src="http://placehold.it/44x44" alt="">
-                                <h6>Ernest Byrd</h6>
-                                <div class="price-yellow">
-                                    <span>Free</span>
-                                    <div class="base"></div>
-                                </div>
-                                <a href="{{url_for('main.new_course')}}">
-                                    <h4>How to become<br>a Powerful Speaker</h4>
-                                </a>
-                                <p>Ugh chambray lumbersexual food truc artisan meditation sartorial post-ironic Wes
-                                    Anderson fap tattooed.</p>
-                                <div class="text-button">
-                                    <a href="single-course.html">view more<i class="fa fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="item course-item">
-                            <a href="{{url_for('main.new_course')}}"><img src="http://placehold.it/345x235" alt=""></a>
-                            <div class="down-content">
-                                <img src="http://placehold.it/44x44" alt="">
-                                <h6>Ernest Byrd</h6>
-                                <div class="price-red">
-                                    <span>Free</span>
-                                    <div class="base"></div>
-                                </div>
-                                <a href="{{url_for('main.new_course')}}">
-                                    <h4>Electrical &amp; Electronic <br>Engingering</h4>
-                                </a>
-                                <p>Ugh chambray lumbersexual food truc artisan meditation sartorial post-ironic Wes
-                                    Anderson fap tattooed.</p>
-                                <div class="text-button">
-                                    <a href="single-course.html">view more<i class="fa fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="item course-item">
-                            <a href="{{url_for('main.new_course')}}"><img src="http://placehold.it/345x235" alt=""></a>
-                            <div class="down-content">
-                                <img src="http://placehold.it/44x44" alt="">
-                                <h6>Ernest Byrd</h6>
-                                <div class="price-red">
-                                    <span>Free</span>
-                                    <div class="base"></div>
-                                </div>
-                                <a href="{{url_for('main.new_course')}}">
-                                    <h4>Electrical &amp; Electronic <br>Engingering</h4>
-                                </a>
-                                <p>Ugh chambray lumbersexual food truc artisan meditation sartorial post-ironic Wes
-                                    Anderson fap tattooed.</p>
-                                <div class="text-button">
-                                    <a href="single-course.html">view more<i class="fa fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="item course-item">
-                            <a href="{{url_for('main.new_course')}}"><img src="http://placehold.it/345x235" alt=""></a>
-                            <div class="down-content">
-                                <img src="http://placehold.it/44x44" alt="">
-                                <h6>Ernest Byrd</h6>
-                                <div class="price-red">
-                                    <span>Free</span>
-                                    <div class="base"></div>
-                                </div>
-                                <a href="{{url_for('main.new_course')}}">
-                                    <h4>Electrical &amp; Electronic <br>Engingering</h4>
-                                </a>
-                                <p>Ugh chambray lumbersexual food truc artisan meditation sartorial post-ironic Wes
-                                    Anderson fap tattooed.</p>
-                                <div class="text-button">
-                                    <a href="{{url_for('main.new_course')}}">view more<i class="fa fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
+  <div class="row" style="margin-top: 10px;">
+    <div class="col-md-6">
+      <div class="card text-center">
+        <div class="card-header">Moringa School</div>
+        <div class="card-body">
+          <h5 class="card-title"><strong>Data science</strong></h5>
+          <p class="card-text">
+            Your favorite pastime as a child can now earn you college credit—and at an Ivy League school, no less. At
+            Cornell University, students can take a one-credit class in Tree Climbing which will "teach you how to get
+            up into the canopy of any tree, to move around, even to climb from one tree to another without touching the
+            ground."
+          </p>
+          <a href="{{url_for('main.apply')}}" class="btn btn-primary">Apply</a>
         </div>
+        <br>
+        <div class="card-footer text-muted">Next Intake: September,2021</div>
+      </div>
     </div>
+
+    <div class="col-md-6">
+      <div class="card text-center">
+        <div class="card-header">Kenyatta University</div> 
+        <div class="card-body">
+          <h5 class="card-title"><strong>Artificial Intelligence</strong></h5>
+          <p class="card-text">
+            You probably think you know how to watch TV pretty well by this point: put on comfy pants, plant yourself on
+            the couch, and zone out. However, undergrads at Montclair State University can fine-tune this art with the
+            school's How to Watch Television class, the aim of which is "for students to critically evaluate the role of
+            television in their lives as well as in the life of the culture."
+          </p>
+          <a href="{{url_for('main.apply')}}" class="btn btn-primary">Apply</a>
+        </div>
+        <br>
+        <div class="card-footer text-muted">Next Intake: August,2021</div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row" style="margin-top: 80px;">
+    <div class="col-md-6">
+      <div class="card text-center">
+        <div class="card-header">Karatina University</div>
+        <div class="card-body">
+          <h5 class="card-title"><strong>IT project management</strong></h5>
+          <p class="card-text">
+            Want some incentive to get moving? Sign up for The Art of Walking at Centre College in Danville, Kentucky.
+            While the course touches on the work of everyone from Heidegger to Kant, it's also, more specifically, just
+            a really long walk, with participants walking up to 25 miles at a stretch.
+          </p>
+          <a href="{{url_for('main.apply')}}" class="btn btn-primary">Apply</a>
+        </div>
+        <br>
+        <div class="card-footer text-muted">Next Intake: August,2021</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card text-center">
+        <div class="card-header">Moringa school</div>
+        <div class="card-body">
+          <h5 class="card-title"><strong>Software Development</strong></h5>
+          <p class="card-text">
+            Do you believe the truth is out there? Are you certain you spotted a Bigfoot print? If that sounds like you,
+            you might just love the Cryptozoology class at Oberlin Experimental College in Ohio. This one-credit class,
+            devoted to the study of cryptids, from the chupacabra to the Loch Ness Monster, is undeniably weird, but
+            sounds a whole lot more fun than your average college seminar. And for more information on other species,
+            discover these 40 Amazing Animal Facts.
+          </p>
+          <a href="{{url_for('main.apply')}}" class="btn btn-primary">Apply</a>
+        </div>
+        <br>
+        <div class="card-footer text-muted">Next Intake: August,2021</div>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <div class="row" style="margin-top: 80px;">
+    <div class="col-md-6">
+      <div class="card text-center">
+        <div class="card-header">Kenyatta University</div>
+        <div class="card-body">
+          <h5 class="card-title"><strong>Computer science</strong></h5>
+          <p class="card-text">
+            Combines a little glycerin, some air, and a plastic wand, and what do you get? A class at Caltech,
+            apparently. Exploring bubbles in their many forms, from those that pose danger to engines to those that aid
+            in medical procedures, this course is nothing short of an ebulliophobic's nightmare.
+          </p>
+          <a href="{{url_for('main.apply')}}" class="btn btn-primary">Apply</a>
+        </div>
+        br
+        <div class="card-footer text-muted">2 days ago</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card text-center">
+        <div class="card-header">Moringa School</div>
+        <div class="card-body">
+          <h5 class="card-title"><strong>IT Project management</strong></h5>
+          <p class="card-text">
+            If you've ever wanted to know if you would make it out alive in a zombie apocalypse, Michigan State
+            University has the one course that can give you a definitive answer. Better yet, since the class is offered
+            entirely online, you can study in the privacy of your own room, even further reducing your chances of
+            becoming an undead being's next meal.
+          </p>
+          <a href="{{url_for('main.apply')}}" class="btn btn-primary">Apply</a>
+        </div>
+        <br>
+        <div class="card-footer text-muted">Next Intake: December,2021</div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-{%endblock%}
+</div>
+{% endblock %}
